@@ -168,8 +168,23 @@ function setupPuzzle() {
    );
 
    // Check the puzzle solution
-   document.getElementById("hanjieGrid").addEventListener("mousetrap", function() {
-      
+   document.getElementById("hanjieGrid").addEventListener("mouseup", 
+      function() {
+      var solved = true;
+
+      for (var i = 0; i < puzzleCells.length; i++) {
+         if ((puzzleCells[i].className === "filled" && 
+            puzzleCells[i].style.backgroundColor !== "rgb(101, 101, 101)")
+         ||
+            (puzzleCells[i].className === "empty" && 
+            puzzleCells[i].style.backgroundColor === "rgb(101, 101, 101)")) {
+
+            solved = false;
+            break;
+         }
+      }
+
+      if (solved) alert("You Solved the Puzzle");
    });
 }
 
